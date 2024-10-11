@@ -6,7 +6,7 @@ import { Container, Col, Row } from "react-bootstrap";
 function App() {
 	const [timer, setTimer] = useState(25 * 60);
 	const [taskStarted, setTaskStarted] = useState(false);
-	const [seconds, setSeconds] = useState(0);
+	const [seconds, setSeconds] = useState(60);
 	const [taskPaused, setTaskPaused] = useState(false);
 
 	//use effect for the minutes
@@ -64,7 +64,7 @@ function App() {
 					</Row>
 					<div className="timer-box d-flex flex-column justify-content-center align-items-center">
 						<Row className="timer">
-							{Math.floor(timer / 60)}:{taskStarted || taskPaused ? seconds : "00"}
+							{Math.floor(timer / 60)}:{(taskStarted || taskPaused) && seconds < 60 ? seconds : "00"}
 						</Row>
 						<Row className="buttons">
 							<Col xs={12} md={6} lg={4}>
